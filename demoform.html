@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Demo Register Form</h1>
+    <table>
+        <form onsubmit="checkValiation()">
+            <tr>
+                <td>Username:</td>
+                <td><input id="Username"/></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="Password" id="Password"/></td>
+            </tr>
+            <tr>
+                <td>Confirm Password:</td>
+                <td><input type="password" id="CFpassword"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"> 
+                    <input type="submit" value="Register" disabled/>
+                </td>
+            </tr>
+        </form>
+    </table>
+        <script>
+            function checkValiation(){
+                var Username = document.getElementById("Username").value;
+                var Password = document.getElementById("Password").value;
+                var CFpassword = document.getElementById("CFpassword").value;
+                if(Password != CFpassword){
+                    alert("Password must be same with CFpassword");
+                    return false; //form khong duoc submit
+                }else if(!Password || !CFpassword || !Username){
+                    alert("password and confirm password and username can blank");
+                    return false;
+                }else if(Password.length < 6 || Password.length >12){
+                    alert("6 <= length of password <=12");
+                }else if(Password == Username){
+                    alert("Password != Username");
+                    return false;
+                }else{
+                    alert("Register successfully!");
+                    //dan tuong doi
+                    window.open("dhttp://127.0.0.1:5500/demoConfirm.html");
+                    return true;
+                }
+            }
+        </script>
+    </form>
+</body>
+</html>
